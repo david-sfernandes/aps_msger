@@ -1,14 +1,2 @@
-#spring:
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://ec2-34-207-12-160.compute-1.amazonaws.com:5432/dbh0tlu6u5atnn
-#    username: hgalxhbksnpzdw
-#    password: 50aab5336820efd1505958ebb858c50daa67d1f4c36dd3831eca4c1ab25128df
-#
-#  jpa:
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-#    hibernate:
-#      ddl-auto: update
-#    database: postgresql
 
 # debug: true
