@@ -18,14 +18,14 @@ public class WebsocketServer extends WebSocketServer {
     @Autowired
     public WebsocketServer() {
         super(new InetSocketAddress(TCP_PORT));
+        connections = new HashSet<>();
     }
 
     @Override
-    public void onOpen(WebSocket connection, ClientHandshake handshake) {
-        connection.send("Welcome! Log in success.");
-        connections.add(connection);
-        System.out.println("New connection from " + connection.getRemoteSocketAddress().getAddress().getHostAddress());
-        broadcast("New connection : " + handshake.getResourceDescriptor());
+    public void onOpen(WebSocket conn, ClientHandshake handshake) {
+        conn.send("Welcome! Log in success.");
+        connections.add(conn);
+        System.out.println("New connection from : " + conn);
     }
 
     @Override
