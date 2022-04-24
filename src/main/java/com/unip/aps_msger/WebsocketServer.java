@@ -12,7 +12,7 @@ import java.util.*;
 
 @Configuration
 public class WebsocketServer extends WebSocketServer {
-    private static final int TCP_PORT = 4449;
+    private static final int TCP_PORT = 80;
     Set<WebSocket> connections;
 
     @Autowired
