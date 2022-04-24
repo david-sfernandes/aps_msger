@@ -58,6 +58,8 @@ public class WebsocketServer extends WebSocketServer {
 
     @Override
     public void onStart() {
-        System.out.println("Server started!");
+        System.out.println("\n~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Server started on port: " + this.getPort());
+        System.out.println("Server address " + this.getAddress());
     }
 }
