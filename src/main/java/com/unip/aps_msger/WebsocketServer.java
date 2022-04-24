@@ -12,7 +12,7 @@ import java.util.*;
 
 @Configuration
 public class WebsocketServer extends WebSocketServer {
-    private static final int TCP_PORT = 4449;
+    private static final int TCP_PORT = 443;
     Set<WebSocket> connections;
 
     @Autowired
@@ -58,6 +58,8 @@ public class WebsocketServer extends WebSocketServer {
 
     @Override
     public void onStart() {
-        System.out.println("Server started!");
+        System.out.println("Server started at port " + this.getPort());
+        setConnectionLostTimeout(0);
+        setConnectionLostTimeout(1000);
     }
 }
