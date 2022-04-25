@@ -1,7 +1,5 @@
 package com.unip.aps_msger;
 
-import com.unip.aps_msger.ssl.ChatServer;
-import org.java_websocket.WebSocketImpl;
 import org.java_websocket.server.DefaultSSLWebSocketServerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -24,9 +22,7 @@ public class ApsMsgerApplication {
 
     @Autowired
     public ApsMsgerApplication() throws Exception {
-
-        ChatServer chatserver = new ChatServer(443); // Firefox does allow multible ssl connection only via port 443 //tested on FF16
-
+        WebsocketServer chatserver = new WebsocketServer(); // Firefox does allow multible ssl connection only via port 443 //tested on FF16
         // load up the key store
         String STORETYPE = "JKS";
         String KEYSTORE = Paths.get("test",  "keystore.jks")

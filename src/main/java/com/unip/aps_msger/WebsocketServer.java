@@ -39,20 +39,22 @@ public class WebsocketServer extends WebSocketServer {
     @Override
     public void onMessage(WebSocket webSocket, String s) {
         broadcast(s);
-        System.out.println(webSocket + " ==> " + s);
+        System.out.println(webSocket + ": " + s);
     }
 
     @Override
     public void onMessage(WebSocket conn, ByteBuffer message) {
         broadcast(message.array());
-        System.out.println(conn + " ==> " + message);
+        System.out.println(conn + ": " + message);
     }
 
     @Override
     public void onError(WebSocket conn, Exception ex) {
-        ex.printStackTrace();
         if (conn != null) {
-            System.out.println("ERROR from " + conn);
+            System.out.println("ERROR in connection: " + conn.getLocalSocketAddress());
+            ex.printStackTrace();
+        } else {
+            System.out.println("Null connection error!");
         }
     }
 
