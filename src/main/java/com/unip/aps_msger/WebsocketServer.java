@@ -5,12 +5,13 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.*;
 
-@Configuration
+@Configuration @CrossOrigin
 public class WebsocketServer extends WebSocketServer {
     private static final int TCP_PORT = 443;
     Set<WebSocket> connections;
