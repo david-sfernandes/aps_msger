@@ -1,16 +1,23 @@
-let ws = new WebSocket("wss://"+ window.location.hostname +":443/")
+var stompClient = null;
 
-ws.onopen = function(e) {
-    console.log("Connected!")
-    console.log(e)
-    ws.send("Hello server!")
+function connect() {
+    var socket = new SockJS('/fallback')
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/to/all', function (msg) {
+            showMsg(JSON.parse(msg.body).text);
+        });
+    });
 }
 
-ws.onmessage = function(e) {
-    console.log(e.data)
+function sendNewMsg(msg) {
+    stompClient.send("/app/s", {}, JSON.stringify({'text': msg}));
 }
 
-ws.onerror = function(e) {
-    console.log(e)
-    ws.close()
+function showMsg(msg) {
+    console.log(msg);
 }
+
+connect();
