@@ -1,4 +1,4 @@
-const ws = new WebSocket("wss://"+ window.location.hostname +":443")
+let ws = new WebSocket("wss://"+ window.location.hostname +":443")
 
 ws.onopen = function(e) {
     console.log("Connected!")
