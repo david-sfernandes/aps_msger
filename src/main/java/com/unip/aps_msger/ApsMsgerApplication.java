@@ -12,6 +12,6 @@ public class ApsMsgerApplication {
 
     @Autowired
     public ApsMsgerApplication() {
-        new WebsocketServer().start();
+        new ChatServer().start();
     }
 }
