@@ -8,5 +8,5 @@ public class Message {
     private String text;
     private String date;
     private String img;
-    private String sendFrom;
+    private String author;
 }

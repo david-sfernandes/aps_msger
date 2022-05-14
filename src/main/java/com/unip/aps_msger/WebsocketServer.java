@@ -29,7 +29,11 @@ public class WebsocketServer extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        conn.send("Welcome! Log in success.");
+        String welcome = generateNotification("Bem vindo! você entrou no chat.");
+        String notification = generateNotification("Um novo usuário entrou no chat!");
+
+        conn.send(welcome);
+        connections.forEach(user -> user.send(notification));
         connections.add(conn);
         System.out.println("New enter the server : " + conn);
     }
@@ -37,15 +41,22 @@ public class WebsocketServer extends WebSocketServer {
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
         connections.remove(conn);
-        System.out.println("Closed connection to " + conn.getRemoteSocketAddress().getAddress().getHostAddress());
-        System.out.println("Host : " + conn.getLocalSocketAddress().getHostName());
-        System.out.println("Port : " + conn.getLocalSocketAddress().getPort());
 
+        System.out.println("Closed connection: " + conn);
+        String notification = generateNotification("Um usuário deixou o chat!");
+
+        connections.forEach(user -> user.send(notification));
     }
+
+
 
     @Override
     public void onMessage(WebSocket webSocket, String s) {
-        sendToAll(webSocket, s);
+        connections.forEach(user -> {
+            if (user != webSocket) {
+                user.send(s);
+            }
+        });
         Message msg = new Message();
         try {
             msg = mapper.readValue(s, Message.class);
@@ -63,7 +74,7 @@ public class WebsocketServer extends WebSocketServer {
 
     @Override
     public void onError(WebSocket conn, Exception ex) {
-        ex.printStackTrace();
+        onClose(conn, 0, "forced close", false);
         if (conn != null) {
             System.out.println("ERROR from " + conn);
         }
@@ -76,9 +87,15 @@ public class WebsocketServer extends WebSocketServer {
         System.out.println("Server address: " + this.getAddress());
     }
 
-    public void sendToAll (WebSocket conn, String s) {
-        Set<WebSocket> copyConnections = connections;
-        copyConnections.remove(conn);
-        this.broadcast(s, copyConnections);
+    public String generateNotification(String notification) {
+        Message newNotification = new Message(notification, "today", null, "SERVER");
+        String notificationJson = null;
+        try {
+            notificationJson = mapper.writeValueAsString(newNotification);
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return notificationJson;
     }
 }

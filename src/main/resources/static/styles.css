@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.container {
+    background-color: #FFFAFA;
+    width: 100%;
+    height: calc(100vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zunip {
+    box-shadow: 0px 0px 41px -18px #00000050;
+    border-radius: 5px;
+    position: relative;
+    width: 400px;
+    display: grid;
+    grid-template-rows: 1fr 408px 0fr;
+}
+
+.header {
+    background-color: #075ebd;
+    width: 100%;
+    height: 100px;
+    border-radius: 5px 5px 0 0;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.header .perfil img {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 4px solid #e54343;
+    border-radius: 50%;
+}
+
+.info {
+    width: 100%;
+}
+
+.info span {
+    color: white;
+    display: block;
+}
+
+.info .name {
+    font-weight: 700;
+    margin-bottom: 3px;
+    letter-spacing: 0.6px;
+}
+
+/* ========== CORPO DA PÁGINA ========== */
+.zunip main .chat {
+    background-color: #075ebd;
+    width: 100%;
+    padding: 12px;
+    border-radius: 0 0px 5px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.zunip .chat .image {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.zunip .chat .image span,
+.zunip .chat button span {
+    color: #6796c9;
+    transition: 300ms;
+    margin-right: 14px;
+    margin-top: 3px;
+}
+
+.zunip .chat .image span:hover,
+.zunip .chat button span:hover {
+    color: white;
+}
+
+#write {
+    width: 100%;
+    max-width: 308px;
+    min-width: 308px;
+    max-height: 40px;
+    min-height: 40px;
+    background-color: #eeeeee;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    color: #111111;
+    border: 1px solid #dad7d7;
+    border-radius: 10px;
+}
+
+#write:focus-within {
+    outline: none;
+}
+
+#messages {
+    overflow: scroll;
+    padding: 1rem 5px;
+}
+
+#send {
+    background-color: #075ebd;
+    padding: 0;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.message {
+    padding: 10px 20px;
+    overflow: scroll;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+.message h4{
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.message h5{
+    font-size: 9px;
+    color: rgba(133, 133, 133, 0.6);
+    margin-top: 3px;
+}
+
+.user {
+     background-color: #348dec;
+     color: white;
+     width: 50%;
+     margin-left: 50%;
+}
+
+.user h4{
+    display: none;
+}
+
+.user h5 {
+    color: rgb(255 255 255 / 90%) !important;
+}
+
+.greybox {
+    background-color: #bdbdbd30;
+    color: #1f1f1f;
+    width: 50%;
+    margin: 10px 5px;
+}
+
+.greybox h4 {
+    color: #075ebd;
+}
+
+.server {
+    width: 100%;
+    color: dimgrey;
+    background-color: transparent;
+    text-decoration: underline;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.server h4, .server h5 {
+    display: none;
+}
+
+/* ========== SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 0;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cecece;
+    border-radius: 10px;
+}
+
+#new_box{
+    box-sizing: border-box;
+    max-width: 400px;
+    max-height: 600px;
+}
+
+#cover {
+    background-color: rgba(105, 105, 105, 0.50);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login {
+    background-color: #006de7;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+
+#login * {
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#login h1 {
+    margin-bottom: 0.5rem !important;
+}
+
+#login button {
+    padding: 7px 19px;
+    border-radius: 10px;
+    border: 1px solid #ffffffbb;
+    background-color: #006de7;
+    min-height: 40px;
+    color: #ffffffbb;
+    transition: 300ms;
+    font-size: 800;
+}
+
+#login button:hover {
+    color: white;
+    border-color: white;
+}
+
+#username {
+    max-width: 308px;
+    max-height: 40px;
+    min-height: 40px;
+    background-color: #eeeeee;
+    padding: 8px 20px;
+    font-size: 16px;
+    color: #111111;
+    border: 1px solid #dad7d7;
+    border-radius: 10px;
+}

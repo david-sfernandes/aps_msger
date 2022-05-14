@@ -1,15 +1,64 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Aps msg</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zunip</title>
+    <link rel="icon" type="imagem/png"
+          href="https://cdn-icons.flaticon.com/png/128/4495/premium/4495187.png?token=exp=1652330038~hmac=8efbbad6e5ce87b9efb2fabda77eff16"/>
+    <!--<script src="source.js"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.esm.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://kit.fontawesome.com/098a40a2b2.js" crossorigin="anonymous"></script>
     <script src="./app.js"></script>
+
+    <!-- ÍCONE GOOGLE -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-    <h1>Welcome</h1>
-    <h2>See the console!!</h2>
-    <label for="message">Message</label>
-    <input type="text" name="message" id="message">
+<body onunload="closeWs()">
+<div class="container">
+    <div class="zunip">
+        <div class="header">
+            <div class="perfil">
+                <img src="https://play-lh.googleusercontent.com/VzUfEzZ2q-y6lWl9liKGTxg7d6Ym5i7yYaHNHZogN8VDrx0RJJ6055mRVUzNMqT7ci9v" alt="">
+            </div>
+            <div class="info">
+                <span id="name" class="name"></span>
+                <span class="status">online</span>
+            </div>
+        </div>
+        <div id="cover">
+            <div id="login">
+                <h1>Bem vindo!</h1>
+                <p>Como quer ser chamado?</p>
+                <input type="text" name="username" id="username" placeholder="Digite seu nome aqui.">
+                <button onclick="saveUsername()">Salvar nome</button>
+            </div>
+        </div>
+
+        <div id="messages">
+        </div>
+
+
+        <main>
+            <div id="message1"  >
+                    <div class="chat">
+                        <div class="image" style="display: none;">
+                            <span class="material-icons-outlined">image</span>
+                        </div>
+                        <input  autocomplete='off' class='form-control' type="text" id="write" placeholder="Escreva sua mensagem">
+                        <button onclick="sendMessage()" id="send" class='btn btn-success' value="Send">
+                            <span class="material-icons-outlined">send</span>
+                        </button>
+                    </div>
+            </div>
+        </main>
+    </div>
+</div>
+
 </body>
 </html>
