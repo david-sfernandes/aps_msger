@@ -49,7 +49,6 @@ public class WebsocketServer extends WebSocketServer {
     }
 
 
-
     @Override
     public void onMessage(WebSocket webSocket, String s) {
         connections.forEach(user -> {
